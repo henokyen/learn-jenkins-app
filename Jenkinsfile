@@ -22,13 +22,13 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Testing...'
                 sh '''
+                    echo "Testing..."
                     test -f build/index.html && echo "index.html exists" || echo "index.html not found"
                     echo 'Additional verification...'
                     npm run test
                 '''
-        }
+            }
         stage('Deploy') {
             steps {
                 echo 'Deploying...'

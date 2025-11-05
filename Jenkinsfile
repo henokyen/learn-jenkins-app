@@ -29,6 +29,7 @@ pipeline {
                     npm run test
                 '''
             }
+        }
         stage('Deploy') {
             steps {
                 echo 'Deploying...'

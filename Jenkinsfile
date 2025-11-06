@@ -6,15 +6,13 @@ pipeline {
                 docker {
                     image 'node:18-alpine'
                     reuseNode true
+                    args '-u root'
                 }
             }
             steps {
                 sh '''
                 ls -la
                 echo 'Building...'
-                rm -rf node_modules package-lock.json
-                node --version
-                npm --version
                 npm ci
                 npm run build
                 ls -la

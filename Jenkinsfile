@@ -46,7 +46,7 @@ pipeline {
             steps {
                 sh '''
                     echo "Running end-to-end tests with Playwright..."
-                    npm install serves
+                    npm install serve
                     node_modules/.bin/serve  -s build &
                     sleep 10
                     npx playwright test

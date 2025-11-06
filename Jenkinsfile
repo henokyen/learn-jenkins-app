@@ -36,6 +36,22 @@ pipeline {
                 '''
             }
         }
+        stage ('end-to-end-test-playwright'){
+            agent {
+                docker {
+                    image 'mcr.microsoft.com/playwright:v1.37.1-focal'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh '''
+                    echo "Running end-to-end tests with Playwright..."
+                    npm install -g serve
+                    serve -s build 
+                    npx playwright test
+                '''
+            }
+        }
         stage('Deploy') {
             steps {
                 echo 'Deploying...'

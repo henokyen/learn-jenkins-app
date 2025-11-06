@@ -40,6 +40,7 @@ pipeline {
                 docker {
                     image 'mcr.microsoft.com/playwright:v1.39.0-jammy'
                     reuseNode true
+                    args '-u root'
                 }
             }
             steps {
@@ -60,7 +61,7 @@ pipeline {
     }
     post {
         always {
-            junit 'test-results/junit.xml'
+            junit 'jtest-results/junit.xml'
         }
     }
 }

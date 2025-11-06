@@ -48,7 +48,7 @@ pipeline {
                     echo "Running end-to-end tests with Playwright..."
                     npm install serves
                     node_modules/.bin/serve  -s build &
-                    slepp 10
+                    sleep 10
                     npx playwright test
                 '''
             }

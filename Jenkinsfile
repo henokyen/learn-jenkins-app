@@ -39,15 +39,16 @@ pipeline {
         stage ('end-to-end-test-playwright'){
             agent {
                 docker {
-                    image 'mcr.microsoft.com/playwright:v1.37.1-focal'
+                    image 'mcr.microsoft.com/playwright:v1.56.1-noble'
                     reuseNode true
+                    args '-u root:root'
                 }
             }
             steps {
                 sh '''
                     echo "Running end-to-end tests with Playwright..."
-                    npm install -g serve
-                    serve -s build 
+                    npm install serves
+                    node_modules/.bin/serve  -s build 
                     npx playwright test
                 '''
             }

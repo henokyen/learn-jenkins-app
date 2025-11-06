@@ -9,10 +9,10 @@ pipeline {
                 }
             }
             steps {
-                cleanWs()
                 sh '''
                 ls -la
                 echo 'Building...'
+                rm -rf node_modules package-lock.json
                 node --version
                 npm --version
                 npm ci
